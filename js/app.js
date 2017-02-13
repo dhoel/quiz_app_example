@@ -138,7 +138,7 @@ function renderQuestionText(state, element) {
 
 function renderChoices(state, element) {
   let currentQuestion = state.questions[state.currentQuestionIndex];
-  let choices = currentQuestion.choices.map(function(choice, index) {
+  let choices = currentQuestion.choices.map((choice, index) => {
     return (
       '<li>' +
         '<input type="radio" name="user-answer" value="' + index + '" required>' +
@@ -183,19 +183,19 @@ let PAGE_ELEMENTS = {
   'final-feedback': $('.final-feedback-page')
 };
 
-$("form[name='game-start']").submit(function(event) {
+$("form[name='game-start']").submit(event => {
   event.preventDefault();
   setRoute(state, 'question');
   renderApp(state, PAGE_ELEMENTS);
 });
 
-$(".restart-game").click(function(event){
+$(".restart-game").click(event => {
   event.preventDefault();
   resetGame(state);
   renderApp(state, PAGE_ELEMENTS);
 });
 
-$("form[name='current-question']").submit(function(event) {
+$("form[name='current-question']").submit(event => {
   event.preventDefault();
   let answer = $("input[name='user-answer']:checked").val();
   answer = parseInt(answer, 10);
@@ -203,9 +203,9 @@ $("form[name='current-question']").submit(function(event) {
   renderApp(state, PAGE_ELEMENTS);
 });
 
-$(".see-next").click(function(event) {
+$(".see-next").click(() => {
   advance(state);
   renderApp(state, PAGE_ELEMENTS);
 });
 
-$(function() { renderApp(state, PAGE_ELEMENTS); });
+$(renderApp(state, PAGE_ELEMENTS));
