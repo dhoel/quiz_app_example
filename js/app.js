@@ -108,33 +108,33 @@ function renderApp(state, elements) {
 // the function and used above in our routing system so that this
 // application view is accounted for in our system
 function renderStartPage(state, element) {
-};
+}
 
 function renderQuestionPage(state, element) {
   renderQuestionCount(state, element.find('.question-count'));
   renderQuestionText(state, element.find('.question-text'));
   renderChoices(state, element.find('.choices'));
-};
+}
 
 function renderAnswerFeedbackPage(state, element) {
   renderAnswerFeedbackHeader(state, element.find(".feedback-header"));
   renderAnswerFeedbackText(state, element.find(".feedback-text"));
   renderNextButtonText(state, element.find(".see-next"));
-};
+}
 
 function renderFinalFeedbackPage(state, element) {
   renderFinalFeedbackText(state, element.find('.results-text'));
-};
+}
 
 function renderQuestionCount(state, element) {
   let text = (state.currentQuestionIndex + 1) + "/" + state.questions.length;
   element.text(text);
-};
+}
 
 function renderQuestionText(state, element) {
   let currentQuestion = state.questions[state.currentQuestionIndex];
   element.text(currentQuestion.text);
-};
+}
 
 function renderChoices(state, element) {
   let currentQuestion = state.questions[state.currentQuestionIndex];
@@ -147,7 +147,7 @@ function renderChoices(state, element) {
     );
   });
   element.html(choices);
-};
+}
 
 function renderAnswerFeedbackHeader(state, element) {
   let html = state.lastAnswerCorrect ?
@@ -155,25 +155,25 @@ function renderAnswerFeedbackHeader(state, element) {
       "<h1 class='user-was-incorrect'>Wrooonnnngggg!</>";
 
   element.html(html);
-};
+}
 
 function renderAnswerFeedbackText(state, element) {
   let choices = state.lastAnswerCorrect ? state.praises : state.admonishments;
   let text = choices[Math.floor(state.feedbackRandom * choices.length)];
   element.text(text);
-};
+}
 
 function renderNextButtonText(state, element) {
   let text = state.currentQuestionIndex < state.questions.length - 1 ?
       "Next" : "How did I do?";
   element.text(text);
-};
+}
 
 function renderFinalFeedbackText(state, element) {
   let text = "You got " + state.score + " out of " +
     state.questions.length + " questions right.";
   element.text(text);
-};
+}
 
 // Event handlers
 let PAGE_ELEMENTS = {
