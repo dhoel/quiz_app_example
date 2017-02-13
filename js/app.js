@@ -140,10 +140,10 @@ function renderChoices(state, element) {
   let currentQuestion = state.questions[state.currentQuestionIndex];
   let choices = currentQuestion.choices.map((choice, index) => {
     return (
-      '<li>' +
-        '<input type="radio" name="user-answer" value="' + index + '" required>' +
-        '<label>' + choice + '</label>' +
-      '</li>'
+      `<li>
+        <input type="radio" name="user-answer" value="${index}" required>
+        <label>${choice}</label>
+      </li>`
     );
   });
   element.html(choices);
@@ -170,8 +170,8 @@ function renderNextButtonText(state, element) {
 }
 
 function renderFinalFeedbackText(state, element) {
-  let text = "You got " + state.score + " out of " +
-    state.questions.length + " questions right.";
+  let text = `"You got "${state.score}" out of "
+    ${state.questions.length}" questions right.`;
   element.text(text);
 }
 
